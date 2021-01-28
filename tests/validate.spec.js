@@ -15,7 +15,7 @@ afterAll(async () => {
 });
 
 describe('Validation Endpoint Tests', () => {
-  it('should not validate', async () => {
+  it('should not validate - rule is absent', async () => {
     const res = await server
       .post('/validate-rule');
 
