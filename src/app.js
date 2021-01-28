@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 const resolveSyntax = require('./middlewares/resolve-syntax-error');
+const { errorResponse } = require('./utils/responses');
 
 const app = express();
 
@@ -12,21 +13,13 @@ app.use(resolveSyntax());
 app.use('/', routes);
 
 // 404 Error Handler
-app.use((req, res, next) => res.status(404).send({
-  status: 'error',
-  data: null,
-  message: 'Route doesnt exist!',
-}));
+app.use((req, res, next) => errorResponse(res, 404, 'Route doesnt exist.'));
 
-app.use((err, req, res, next) => res.status(500).send({
-  status: 'error',
-  data: null,
-  message: 'Ok, we are being honest here, we don\'t what happened!',
-}));
+app.use((err, req, res, next) => errorResponse(res, 500, 'Ok, we are being honest here, we don\'t what happened.'));
 
 process.on('unhandledRejection', (error) => {
   console.error('FATAL UNEXPECTED UNHANDLED REJECTION!', error.message);
-  throw error;
+  process.exit(0);
 });
 
 module.exports = app;
