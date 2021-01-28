@@ -9,8 +9,8 @@ beforeAll(() => {
   server = request(app);
 });
 
-afterAll(() => {
-  server.close();
+afterAll(async () => {
+  await new Promise((resolve) => setTimeout(() => resolve(), 500)); // avoid jest open handle error
 });
 
 describe('Home Tests', () => {
@@ -44,6 +44,6 @@ describe('Home Tests', () => {
 
     expect(res.body.status).toEqual('error');
     expect(res.body.data).toBeNull();
-    expect(res.body.message).toEqual('Route doesnt exist!');
+    expect(res.body.message).toEqual('Route doesnt exist.');
   });
 });
