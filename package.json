@@ -24,14 +24,14 @@
   },
   "homepage": "https://github.com/mustaphee/flw-validation#readme",
   "dependencies": {
-    "@types/jest": "^26.0.20",
-    "@types/supertest": "^2.0.10",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "joi": "^17.3.0",
     "lodash.get": "^4.4.2"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/supertest": "^2.0.10",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
